@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+	*{margin:0;padding:0;}
+	span{position:absolute;top:50%;left:50%;margin-top:-50px;margin-left:-50px;width:100px;height:18px;font-size:15px;text-shadow:2px 2px 2px black;}
+</style>
+<script>
+	window.onload=function(){
+		var oSpan = document.body.children[0];
+		// alert(oSpan)
+		document.onmousemove=function(ev){
+			var x1 = ev.clientX;
+			var y1 = ev.clientY;
+			var x2 = oSpan.offsetLeft+oSpan.offsetWidth;
+			var y2 = oSpan.offsetTop +oSpan.offsetHeight;
+			var x = (x2-x1)/3;
+			var y = (y2-y1)/3;
+			var dis = (Math.sqrt(x*x+y*y))/20
+			document.title= x+','+y;  
+			oSpan.style.textShadow=''+x+'px '+y+'px '+dis+'px black';
+			
+		}
+	};
+</script>
+</head>
+
+<body>
+	<span>Ren Qing Yue</span>
+</body>
+</html>

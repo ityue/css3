@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		body{
+			background:#999;
+		}
+		div{
+			width:200px;
+			height:50px;
+			margin:100px auto;
+			/*border:1px solid red;*/
+			position:relative;
+			/*top:0;
+			left:0;*/
+			/*-webkit-background-clip:text;*/
+		}
+		.span{
+			position:absolute;
+			top:0;
+			left:10px;
+			font-size:30px;
+			text-align:center;
+			line-height:50px;
+			color:rgba(0,0,0,0);
+			-webkit-background-clip:text;			
+			z-index:2;
+		}
+		.span1{
+			position:absolute;
+			top:0;
+			left:10px;
+			font-size:30px;
+			text-align:center;
+			line-height:50px;
+			z-index:1;
+		}
+	</style>
+	<script>
+	window.onload=function(){
+		var oDiv = document.getElementsByTagName('span')[0]; 
+		// alert(oDiv)
+		var i =-50;
+		setInterval(function(){
+			i+=3;
+			oDiv.style.background='-webkit-linear-gradient(-30deg,rgba(255,255,255,0) '+i+'px,rgba(255,255,255,1) '+(i+20)+'px,rgba(255,255,255,0) '+(i+40)+'px)';
+			oDiv.style.WebkitBackgroundClip='text';
+			if(i>=300){
+				i=-50;
+			}
+		},30);
+	};
+		
+
+	</script>
+</head>
+<body>
+	<div>
+		<span class="span">移动滑块解锁</span>
+		<span class="span1">移动滑块解锁</span>
+	</div>
+</body>
+</html>

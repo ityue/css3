@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width:100px;
+			height:100px;
+			border:1px solid red;
+		}
+	</style>
+
+</head>
+<body>
+	<input type="text" >
+	<input type="button" value="换色">
+	<div></div>
+</body>
+<script>
+
+	var oInp = document.getElementsByTagName('input')[0];
+	var oBtn = document.getElementsByTagName('input')[0];
+
+	var oDiv = document.getElementsByTagName('div')[0];
+	
+	function addEvent(){
+		if(addEventListener(obj,sEv,fn)){
+			obj.addEventListener(sEv,fn,false);
+		}else{
+			obj.attachEvent('on'+sEv,fn)
+		}
+	}
+	oBtn.onclick=function(){
+		addEvent(window,'onstorage',function(){
+			oDiv.style.background='oInp.value'
+		})
+	};
+	
+</script>
+</html>

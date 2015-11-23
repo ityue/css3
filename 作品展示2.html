@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;list-style:none;}
+		body{background:#000;}
+		ul{ width:480px; height:260px; margin:100px auto; position:relative;}
+		ul li{
+			width:480px;
+			height:260px;
+			-webkit-transform:perspective(1100px) translateX(0px) rotateY(0deg);
+			opacity:0;
+			position:absolute;
+			top:0;
+			left:0;
+			-webkit-transition:1s all ease;
+		}
+		ul li.l2{
+			-webkit-transform:perspective(1100px) translateX(300px) rotateY(60deg);
+			opacity:0;
+			z-index:1;
+		}
+		ul li.l1{
+			-webkit-transform:perspective(1100px) translateX(-250px) rotateY(60deg);
+			opacity:1;
+			z-index:2;
+		}
+		ul li.cur{
+			-webkit-transform:perspective(1100px) translateX(0px) rotateY(0deg);
+			opacity:1;
+			/*position:absolute;*/
+			z-index:3;
+		}
+		ul li.r1{
+			-webkit-transform:perspective(1100px) translateX(250px) rotateY(-60deg);
+			opacity:1;
+			z-index:2;
+		}
+		ul li.r2{
+			-webkit-transform:perspective(1100px) translateX(300px) rotate(-60deg);
+			opacity:0;
+			z-index:1;
+		}
+	</style>
+	<script>
+			window.onload=function(){
+				var oBtn1 = document.getElementsByTagName('input')[0];
+				var oBtn = document.getElementsByTagName('input')[1];
+				var oUl = document.getElementsByTagName('ul')[0];
+				var aLi = oUl.children;
+				var iNow = 2;
+				oBtn.onclick=function(){
+					iNow++
+					for(var i=0;i<aLi.length;i++){
+						aLi[i].className=''
+					}
+				
+					aLi[(iNow-2)%aLi.length].className='l2';
+					aLi[(iNow-1)%aLi.length].className='l1';
+					aLi[iNow%aLi.length].className='cur';
+					aLi[(iNow+1)%aLi.length].className='r1';
+					aLi[(iNow+2)%aLi.length].className='r2';
+				};
+				oBtn1.onclick=function(){
+					iNow--
+					for(var i=0;i<aLi.length;i++){
+						aLi[i].className=''
+					}
+				
+					aLi[(iNow-2)%aLi.length].className='r2';		//-1	
+					aLi[(iNow-1)%aLi.length].className='r1';		//0	
+					aLi[iNow%aLi.length].className='cur';			//1	
+					aLi[(iNow+1)%aLi.length].className='l1';		//2	
+					aLi[(iNow+2)%aLi.length].className='l2';		//-2 length	
+				};
+			};
+	</script>
+</head>
+<body>
+	<div>
+		<input type="button" value="上一个">
+		<input type="button" value="下一个">
+		<ul>
+			<li class="l2"><img src="img/1.jpg" /></li>
+			<li class="l1"><img src="img/2.jpg" /></li>
+			<li class="cur"><img src="img/3.jpg" /></li>
+			<li class="r1"><img src="img/4.jpg" /></li>
+			<li class="r2"><img src="img/5.jpg" /></li>
+			<li><img src="img/6.jpg" /></li>
+			<li><img src="img/7.jpg" /></li>
+			<li><img src="img/8.jpg" /></li>
+			<li><img src="img/9.jpg" /></li>
+			<li><img src="img/10.jpg" /></li>
+			<li><img src="img/11.jpg" /></li>
+			<li><img src="img/12.jpg" /></li>
+		</ul>
+	</div>
+</body>
+</html>

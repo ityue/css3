@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		/*img{width:;}*/
+
+		.mask{
+			float:left;
+			width:200px;
+			height:200px;
+			/*display:inline-block;
+			background:#000; */
+			-webkit-mask:url(img/tx1.png) ;
+		}
+		.mask img{
+			width:200px;
+			height:200px;
+			box-shadow:inset 2px 2px 2px #000;
+		}
+		.mask2{
+			float:left;
+			width:200px;
+			height:200px;
+			-webkit-mask:url(img/tx2.png) ;
+		}
+		.mask2 img{
+			width:200px;
+			height:200px;
+			box-shadow:inset 2px 2px 2px #000;
+			-webkit-transform:scale(1,1);
+			-webkit-transition:1s all ease;
+		}
+		.mask2:hover{
+			-webkit-transform:scale(-1,1);
+		}
+		.maskall{
+			margin-left:100px;
+		}
+		.maskp,.maskp-2{
+			float:left;
+			/*position:absolute;*/
+			border-radius:50%;
+			width:100px;
+			height:100px;
+			-webkit-mask:-webkit-linear-gradient(rgba(0,0,0,1),rgba(0,0,0,0));
+			-webkit-transition:1s all ease;
+		}
+		.maskp-2{
+			border-radius:50%;
+			width:100px;
+			height:100px;
+			-webkit-transform:perspective(800px) rotateY(0deg);
+			/*-webkit-transition:1s all ease;*/
+		}
+		.maskp-2:hover{
+
+			-webkit-transform:perspective(200px) rotateY(180deg);
+		}
+		.maskp img,.maskp2 img,.maskp-2 img{
+			width:100px;
+			height:100px;
+		}
+		.maskp:hover{
+			-webkit-transform:scale(2,2);
+		}
+		.maskp2 {
+			float:left;
+			border-radius:50%;
+			width:100px;
+			height:100px;
+			-webkit-mask:-webkit-linear-gradient(rgba(0,0,0,0) 50%,rgba(0,0,0,1) );
+			-webkit-mask-position:40px 50px;
+			-webkit-transition:1s all ease-out;
+		}
+		.maskp2:hover{
+			-webkit-transform:rotate(360deg);
+		}	
+		.wz{
+			/*width:100px;*/
+			height:50px;
+			text-align:center;
+			line-height:50px;
+			font-size:30px;
+			position:absolute;
+			top:50px;
+			left:600px;
+			font-weight:bold;
+			font-family:'Î¢ÈíÑÅºÚ';
+			/*border:1px solid black; */
+			background:-webkit-linear-gradient(red,green,yellow,blue,pink,gold);
+			-webkit-background-clip:text;
+			color:rgba(0,0,0,0);
+		}
+		.rotateall{
+			position:absolute;
+			top:400px;
+			left:200px;
+			width:100%;
+			height:100%;
+		}
+		.rotate{
+			float:left;
+			width:100px;
+			height:100px;
+			background:#ccc;
+			-webkit-transition:1s all ease;
+			-webkit-transform:perspective(100px) rotateY(0deg);
+		}
+		.rotate:active{
+			-webkit-transform:perspective(100px) rotateY(180deg);
+		}
+		.rotate2{
+			float:left;
+			width:200px;
+			height:200px;
+			margin-left:40px;
+			background:#666;
+			-webkit-transition:1s all ease;
+			-webkit-transform:perspective(200px) rotateY(0deg);
+		}
+		.rotate2:active{
+			-webkit-transform:perspective(100px) rotateY(180deg);
+		}
+		.rotatex{
+			width:200px;
+			height:200px;
+			background:#999;
+			margin-left:40px;
+			float:left;
+			-webkit-transition:1s all ease;
+			-webkit-transform:perspective(400px) rotateX(0deg);
+		}
+		.rotatex:active{
+			-webkit-transform:perspective(100px) rotateX(180deg);
+		}
+	</style>
+</head>
+<body>
+	<div style="overflow:hidden;">
+		<div class="mask"><img src="1.png" alt=""></div>
+		<div class="mask2"><img src="1.png" alt=""></div>
+	</div>
+	<div class="maskall">
+		<div class="maskp"><img src="1.png" alt=""></div>
+		<div class="maskp-2"><img src="1.png" alt=""></div>
+		<div class="maskp"><img src="1.png" alt=""></div>
+	</div>
+	<div class="maskp2"><img src="1.png" alt=""></div>
+	<span class="wz">hello h5</span>
+	<div class="rotateall">
+		<div class="rotate">123</div>
+		<div class="rotate2">rotateY</div>
+		<div class="rotatex">rotatex</div>
+	</div>
+</body>
+</html>

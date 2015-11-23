@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.box{
+			width:200px;
+			height:200px;
+			background:#ccc;
+			-webkit-transform-style:preserve-3d;
+			-webkit-transform:perspective(800px) rotateX(0deg) rotateY(0deg);
+			/*-webkit-transform:perspective(800px) rotateX(0deg) rotateY(0deg);*/
+			position:relative;
+			top:0;
+			left:0;
+			margin:100px auto;
+		}
+		.box div{
+			width:200px;
+			height:200px;
+			position:absolute;
+			top:0;
+			left:0;
+			opacity:0.6;
+		}
+		.box .front{
+			-webkit-transform:translateZ(100px);
+			background:green;
+		}
+		.box .back{
+			-webkit-transform:translateZ(-100px);
+			background:red;
+		}
+		.box .left{
+			-webkit-transform:translateX(-100px) rotateY(90deg);
+			background:#ccc;
+		}
+		.box .right{
+			-webkit-transform:translateX(100px) rotateY(-90deg);
+			background:pink;
+		}
+		.box .top{
+			-webkit-transform:translateY(-100px) rotateX(-90deg);
+			background:yellow;
+		}
+		.box .bottom{
+			-webkit-transform:translateY(100px) rotateX(90deg);
+			background:black;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var oBox  = document.querySelector('.box');
+			var x = 0;
+			var y = 0;
+			var left = false;
+			var right = false;
+			var top = false;
+			var bottom = false;
+			setInterval(function(){
+				if(left){
+					y-=3;
+					oBox.style.WebkitTransform = 'perspective(800px) rotateX('+x+'deg) rotateY('+y+'deg)'
+				}else if(right){
+					y+=3;
+					oBox.style.WebkitTransform = 'perspective(800px) rotateX('+x+'deg) rotateY('+y+'deg)'
+				}else if(top){
+					x+=3;
+					oBox.style.WebkitTransform = 'perspective(800px) rotateX('+x+'deg) rotateY('+y+'deg)'
+				}else if(bottom){
+					x-=3;
+					oBox.style.WebkitTransform = 'perspective(800px) rotateX('+x+'deg) rotateY('+y+'deg)'
+				}
+			},30)
+			document.onkeydown=function(ev){
+				// alert(ev.keyCode)
+				if(ev.keyCode==37){
+					left=true;
+				}else if(ev.keyCode==38){
+					top=true;
+				}else if(ev.keyCode==39){
+					right=true;
+				}else if(ev.keyCode==40){
+					bottom = true;
+				}
+			};
+			document.onkeyup=function(ev){
+				if(ev.keyCode==37){
+					left = false;
+				}else if(ev.keyCode==38){
+					top = false;
+				}else if(ev.keyCode==39){
+					right = false;
+				}else if(ev.keyCode==40){
+					bottom=false;
+				}
+			};
+			document.onmousedown=function(ev){
+				var disX = ev.clientX-y;
+				var disY = ev.clientY-x;
+				// alert(1)
+				document.onmousemove=function(ev){
+					x = ev.clientY-disY;
+					y = ev.clientX-disX;
+					oBox.style.WebkitTransform='perspective(800px) rotateX('+-x/5+'deg) rotateY('+y/5+'deg)';
+				};
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				};
+				return false;
+			};
+		};
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="front"></div>
+		<div class="back"></div>
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="top"></div>
+		<div class="bottom"></div>		
+	</div>
+</body>
+</html>

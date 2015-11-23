@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;list-style:none;}
+		body{background:#000;}
+		ul{
+			width:133px;
+			height:200px;
+			margin:150px auto;
+			position:relative;
+			top:0;
+			left:0;
+			-webkit-transform-style:preserve-3d;
+			-webkit-transform:perspective(800px)  rotateX(-15deg) rotateY(0deg);
+			/*-webkit-transition:4s all ease;*/
+			/*影响定时器一定要给去掉*/
+		}
+		ul li{
+			width:100%;
+			height:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			-webkit-transition:1s all ease;
+		}
+		ul li img{
+			width:100%;
+			height:100%;
+			border-radius:5px;
+			box-shadow:2px 2px 2px #fff;
+		}
+		ul li .em{
+			position:absolute;
+			top:210px;
+			left:0;
+			width:100%;
+			height:100%;
+			-webkit-transform:scale(1,-1);
+			-webkit-mask:-webkit-linear-gradient(rgba(0,0,0,0) 40%,rgba(0,0,0,1));
+			opacity:0.3;
+		}
+	</style>
+	<script>
+		// window.onload=function(){
+		// 	var oUl = document.querySelector('#ul1');
+		// 	// alert(oUl)
+		// 	var aLi = oUl.children;
+		// 	var i = aLi.length-1;
+		// 	var timer = setInterval(function(){
+		// 		aLi[i].style.WebkitTransform='rotateY('+i*360/aLi.length+'deg) translateZ(305px)';
+		// 		i--;
+		// 		if(i<0)
+		// 			clearInterval(timer)
+		// 	},100);
+		// 	var x = -15;
+		// 	var y = 0;
+		// 	var top = false;
+		// 	var bottom = false;
+		// 	var left = false;
+		// 	var right = false;
+		// 	setInterval(function(){
+		// 		if(top)
+		// 			x+=3;
+		// 		if(bottom)
+		// 			x-=3;
+		// 		if(left)
+		// 			y-=3;
+		// 		if(right)
+		// 			y+=3;
+		// 		if(x>=60){
+		// 			x=60;
+		// 		}else if(x<=-60){
+		// 			x=-60;
+		// 		}
+		// 	oUl.style.WebkitTransform='perspective(800px) rotateX('+x+'deg) rotateY('+y+'deg)';
+		// 	},30);
+		// 	document.onkeydown=function(ev){
+		// 		switch(ev.keyCode){
+		// 			case 37:
+		// 				left=true;
+		// 				break;
+		// 			case 38:
+		// 				top=true;
+		// 				break;
+		// 			case 39:
+		// 				right=true;
+		// 				break;
+		// 			case 40:
+		// 				bottom=true;
+		// 				break;
+		// 			}
+		// 	};
+		// 	document.onkeyup=function(ev){
+		// 		switch(ev.keyCode){
+		// 			case 37:
+		// 				// alert(1)
+		// 				left=false;
+		// 				break;
+		// 			case 38:
+		// 				top=false;
+		// 				break;
+		// 			case 39:
+		// 				right=false;
+		// 				break;
+		// 			case 40:
+		// 				bottom=false;
+		// 				break;
+		// 		}
+		// 	};
+		// }
+		window.onload=function(){
+			var oUl = document.getElementById('ul1');
+			var aLi = oUl.children;
+			var i=aLi.length-1;
+			var timer = setInterval(function(){
+				aLi[i].style.WebkitTransform='rotateY('+i*360/aLi.length+'deg) translateZ(305px)';
+				i--;
+				if(i<0){
+					clearInterval(timer);
+				}
+			},100);
+			
+			var x = -15;
+			var y = 0;
+			var top = false;
+			var bottom = false;
+			var left = false;
+			var right = false;
+			setInterval(function(){
+				if(top)
+					x+=3;
+				if(bottom)
+					x-=3;
+				if(left)
+					y-=3;
+				if(right)
+					y+=3;
+				if(x>=60){
+					x=60;
+				}else if(x<=-60){
+					x=-60;
+				}
+				oUl.style.WebkitTransform='perspective(800px) rotateX('+x+'deg) rotateY('+y+'deg)';
+			},30);
+			document.onkeydown=function(ev){
+				switch(ev.keyCode){
+					case 37:
+						left=true;
+						break;
+					case 38:
+						top=true;
+						break;
+					case 39:
+						right=true;
+						break;
+					case 40:
+						bottom=true;
+						break;
+				}
+			};
+			document.onkeyup=function(ev){
+				switch(ev.keyCode){
+					case 37:
+						left=false;
+						break;
+					case 38:
+						top=false;
+						break;
+					case 39:
+						right=false;
+						break;
+					case 40:
+						bottom=false;
+						break;
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li><img src="img/1.jpg" /><img class="em" src="img/1.jpg" /></li>
+		<li><img src="img/2.jpg" /><img class="em" src="img/2.jpg" /></li>
+		<li><img src="img/3.jpg" /><img class="em" src="img/3.jpg" /></li>
+		<li><img src="img/4.jpg" /><img class="em" src="img/4.jpg" /></li>
+		<li><img src="img/5.jpg" /><img class="em" src="img/5.jpg" /></li>
+		<li><img src="img/6.jpg" /><img class="em" src="img/6.jpg" /></li>
+		<li><img src="img/7.jpg" /><img class="em" src="img/7.jpg" /></li>
+		<li><img src="img/8.jpg" /><img class="em" src="img/8.jpg" /></li>
+		<li><img src="img/9.jpg" /><img class="em" src="img/9.jpg" /></li>
+		<li><img src="img/10.jpg" /><img class="em" src="img/10.jpg" /></li>
+		<li><img src="img/11.jpg" /><img class="em" src="img/11.jpg" /></li>
+	</ul>
+</body>
+</html>

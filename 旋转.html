@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background:#000;
+		}
+		*{margin:0; padding:0;list-style:none;}
+		ul{
+			width:245px;
+			height:200px;
+			/*background:red;*/
+			top:50%;
+			left:50%;
+			margin-left:-123px;
+			margin-top:-100px;
+			position:absolute;
+			-webkit-transform:perspective(800px) rotateY(0deg) rotateX(-15deg);
+			-webkit-transform-style:preserve-3d;
+			-webkit-transition:10s all ease;
+			/*-webkit-transition-:;*/
+		}
+		ul:hover{
+			-webkit-transform:perspective(800px) rotateY(720deg) rotateX(-15deg);	
+		}
+		li{
+			position:absolute;
+			/*top:0;
+			left:0;*/
+			/*-webkit-transition:rotateY(30deg);*/
+			-webkit-transition:2s all ease;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var aLi = document.getElementsByTagName('li');
+			var i = aLi.length-1;
+			document.onclick=function(){
+				var timer = setInterval(function(){
+					i--;
+					for(var i=0;i<aLi.length;i++){
+							aLi[i].style.transform='rotateY('+i*(360/aLi.length)+'deg) translateZ(350px)'
+							aLi[i].style.transtion = 'perspective(800px) '
+					}
+					if(i==0){
+						clearInterval(timer)
+					} 
+				},1000)
+			}
+		};
+	</script>
+</head>
+<body>
+	<ul>
+		<li><img src="img/2.jpg" alt=""></li>
+		<li><img src="img/3.jpg" alt=""></li>
+		<li><img src="img/4.jpg" alt=""></li>
+		<li><img src="img/5.jpg" alt=""></li>
+		<li><img src="img/6.jpg" alt=""></li>
+		<li><img src="img/7.jpg" alt=""></li>
+		<li><img src="img/8.jpg" alt=""></li>
+		<li><img src="img/9.jpg" alt=""></li>
+		<li><img src="img/10.jpg" alt=""></li>
+		<li><img src="img/11.jpg" alt=""></li>
+		<li><img src="img/12.jpg" alt=""></li>
+		
+	</ul>
+</body>
+</html>

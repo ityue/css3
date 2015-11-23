@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width:480px;
+			height:260px;
+			position:relative;
+			/*top:50%;*/
+			top:0;
+			left:0;
+			margin:100px auto; 
+			background:url(6.jpg) no-repeat;       
+		}
+		/*img{
+			width:100%;
+			height:100%;
+			}*/
+		.box span{
+			background:url(7.jpg) no-repeat ;
+			opacity:1;
+			position:absolute;
+			/*-webkit-transform:;*/
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var oBox = document.body.children[1]; 
+			var aS = oBox.children;
+			var oBtn = document.getElementsByTagName('input')[0];
+			// var 
+			var r = 4;
+			var c = 7;	
+			for(var i=0;i<r;i++){
+				for(var j=0;j<c;j++){
+					var oSpan = document.createElement('span');
+					oSpan.style.width = oBox.offsetWidth/c+'px';	
+					oSpan.style.height = oBox.offsetHeight/r+'px';
+					oBox.appendChild(oSpan);
+					// oSpan.style.position = 'absolute';
+					oSpan.style.left = oSpan.offsetWidth*j+'px';
+					oSpan.style.top = oSpan.offsetHeight*i+'px';
+					oSpan.style.backgroundPosition = '-'+oSpan.offsetWidth*j+'px -'+oSpan.offsetHeight*i+'px';
+					// oSpan.style.backgroundPosition = 
+				}
+			};
+			// var aS = document.getElementsByTagName('span');
+			oBtn.onclick=function(){
+				for(var i=0;i<aS.length;i++){
+					// aS[i].style.background='url(7.jpg) no-repeat';
+					aS[i].style.WebkitTransition='2s all ease';	
+
+					var aSx = aS[i].offsetLeft+aS[i].offsetWidth/2;
+					var aSy = aS[i].offsetTop+aS[i].offsetHeight/2;
+					var oBoxx = oBox.offsetWidth/2;
+					var oBoxy = oBox.offsetHeight/2;
+					var disX = (aSx-oBoxx)*Math.random();
+					var disY = (aSy-oBoxy)*Math.random();
+					// -webkit-transition:2s all ease;
+					// aS[i].innerHTML=disX+','+disY;
+					// aS[i].style.backgroundPosition=''+oSpan.offsetWidth*i+'px,'+oSpan.offsetHeight*j+'px';
+					aS[i].style.WebkitTransform = 'perspective(800px) translateX('+disX+'px) translateY('+disY+'px) rotateX('+(Math.random()*360+180)+'deg) rotateY('+(Math.random()*360+180)+'deg)';
+					aS[i].style.opacity=0;
+				}
+			};			
+		};
+
+	
+	</script>
+</head>
+<body>
+	<input type="button" value="爆炸">
+	<div class="box">
+		<!-- <img src="6.jpg" alt=""> -->
+	</div>
+</body>
+</html>
