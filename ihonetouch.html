@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalabel=no"/>
+	<!-- <meta name="viewport" content="width=device-width,initial-scale=1,user-scalabel=no"/> -->
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+		.box{
+			width:100%;
+			height:200px;
+			overflow:hidden;
+			position:relative;
+		}
+		.box ul{
+			width:1600px;
+			height:200px;
+			border:1px solid red;
+			position:absolute;
+			top:0;
+			left:0;
+			/*background:red;*/
+		}
+		.box li{	
+			float:left;
+			width:320px;
+			height:200px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var oUl = document.getElementsByTagName('ul')[0];
+			oUl.addEventListener('touchstart',function(ev){
+				function fnmove(ev){
+					oUl.style.left = ev.targetTouches[0].pageX-disX+'px';
+			
+				};
+				function fnup(ev){
+					oUl.removeEventListener('touchmove',fnmove,false);
+					oUl.removeEventListener('touchmove',fnup,false);
+				}
+				var disX = ev.targetTouches[0].pageX-oUl.offsetLeft;
+				
+				oUl.addEventListener('touchmove',fnmove,false);
+				oUl.addEventListener('touchup',fnup,false);
+				ev.parentDefault();
+			},false)
+		};
+	</script>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li style="background:red">1</li>
+			<li style="background:yellow">2</li>
+			<li style="background:blue">3</li>
+			<li style="background:pink">4</li>
+			<li style="background:green">5</li>
+		</ul>
+	</div>
+</body>
+</html>	
