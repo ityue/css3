@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalabel=no"/>
+	<style>
+		#box{
+			width:100px;
+			height:100px;
+			background:red;
+			position:absolute;
+			top:0;
+			left:0; 
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var oBox = document.getElementById('box');
+				
+			oBox.addEventListener('touchstart',function(ev){
+				function tomove(ev){
+					var l = ev.targetTouches[0].pageX-disX;
+					var t = ev.targetTouches[0].pageY-disY;
+					if(l>document.documentElement.clientWidth-oBox.offsetWidth){
+						l=document.documentElement.clientWidth-oBox.offsetWidth;
+					}
+					if(l<0){
+						l=0;
+					}
+					if(t>document.documentElement.clientHeight-oBox.offsetHeight){
+						t=document.documentElement.clientHeight-oBox.offsetHeight;
+					}
+					if(t<0){
+						t=0;
+					}
+					oBox.style.left = l+'px';
+					oBox.style.top = t+'px';
+				}
+				function toup(){
+					oBox.removeEventListener('touchmove',tomve,false);
+					oBox.removeEventListener('touchup',tomove,false);
+				}
+				var disX = ev.targetTouches[0].pageX-oBox.offsetLeft;
+				var disY = ev.targetTouches[0].pageY-oBox.offsetTop;
+				oBox.addEventListener('touchmove',tomove,false)
+				oBox.addEventListener('touchup',toup,false)
+				ev.preventDefault();
+			},false)	
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>
